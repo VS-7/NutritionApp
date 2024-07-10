@@ -1,0 +1,5 @@
+flet==0.22.*
+prisma
+prisma-client
+psycopg2-binary
+alembic

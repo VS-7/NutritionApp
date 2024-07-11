@@ -1,25 +1,14 @@
-import sqlite3
 import pandas as pd
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 
-# Caminho para o arquivo SQLite
-sqlite_db_path = 'tabela_alimentos.db'
-
-# Conectar ao banco de dados SQLite e exportar os dados
-sqlite_conn = sqlite3.connect(sqlite_db_path)
-query = "SELECT * FROM alimentos"
-df = pd.read_sql_query(query, sqlite_conn)
-sqlite_conn.close()
-
-# Salvar os dados em um arquivo CSV
+# Caminho para o arquivo CSV
 csv_path = 'alimentos.csv'
-df.to_csv(csv_path, index=False)
 
 # Configurar a conexão com o PostgreSQL
-postgres_url = 'postgres://default:bHJ0dtgYQ9RS@ep-black-night-a46gt28n.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require'
+postgres_url = 'postgresql://postgres.ocphuexqtlflnvylcpou:qNNMqRMUuSMkwGDB@aws-0-sa-east-1.pooler.supabase.com:6543/postgres'
 engine = create_engine(postgres_url)
 
-# Criar a tabela no PostgreSQL
+# Definir a estrutura da tabela no PostgreSQL
 create_table_query = """
 CREATE TABLE IF NOT EXISTS alimentos (
     id SERIAL PRIMARY KEY,
@@ -46,10 +35,15 @@ CREATE TABLE IF NOT EXISTS alimentos (
     vitamina_c_mg FLOAT
 );
 """
-with engine.connect() as conn:
-    conn.execute(create_table_query)
 
-# Importar os dados do CSV para o PostgreSQL
+# Executar a consulta de criação da tabela
+with engine.connect() as conn:
+    conn.execute(text(create_table_query))
+
+# Carregar os dados do CSV para um DataFrame do Pandas
+df = pd.read_csv(csv_path)
+
+# Importar os dados para a tabela 'alimentos' no PostgreSQL
 df.to_sql('alimentos', engine, if_exists='replace', index=False)
 
 print("Dados migrados com sucesso!")

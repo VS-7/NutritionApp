@@ -24,7 +24,7 @@ def search_foods(query, access_token):
         "Authorization": f"Bearer {access_token}"
     }
     params = {
-        "method": "foods.search",
+        "method": "foods.search.v3",
         "search_expression": query,
         "format": "json"
     }

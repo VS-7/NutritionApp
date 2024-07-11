@@ -1,4 +1,4 @@
-id,alimento,Umidade,Caloria_kcal,Caloria_kJ,Proteina,Lipideos,Colesterol,Carboidrato,Fibra_Alimentar,Cinzas,Calcio,Magnesio,Manganes,Fosforo,Ferro,Sodio,Potassio,Cobre,Zinco,Retinol,RE,RAE,Tiamina,Riboflavina,Piridoxina,Niacina,Vitamina_C
+id,alimento,umidade,caloria_kcal,caloria_kj,proteina,lipideos,colesterol,carboidrato,fibra,cinzas,calcio,magnesio,manganes,fosforo,ferro,sodio,potassio,cobre,zinco,retinol,re,rae,tiamina,riboflavina,piridoxina,niacina,vitamina_c
 1,"Arroz, integral, cozido",70.1,124.0,517.0,2.6,1.0,,25.8,2.7,0.5,5.0,59.0,0.63,106.0,0.3,1.0,75.0,0.02,0.7,,,,0.08,,0.08,,
 2,"Arroz, integral, cru",12.2,360.0,1505.0,7.3,1.9,,77.5,4.8,1.2,8.0,110.0,2.99,251.0,0.9,2.0,173.0,0.07,1.4,,,,0.26,,0.18,4.18,
 3,"Arroz, tipo 1, cozido",69.1,128.0,537.0,2.5,0.2,,28.1,1.6,0.1,4.0,2.0,0.3,18.0,0.1,1.0,15.0,0.02,0.5,,,,,,,,
